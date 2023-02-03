@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Testing the Flask App') {
+            steps {
+                bat 'python test.py'
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 bat 'docker build -t fashion_mnist .'

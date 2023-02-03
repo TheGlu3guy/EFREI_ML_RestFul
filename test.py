@@ -12,13 +12,12 @@ array = array.tolist()
 import requests
 import json
 
-im = array
-
-data = {'image': im}
-def predict():
-    result = requests.post('http://127.0.0.1:5000/predict', json.dumps(data))
+data = {'image': array}
+def classify():
+    result = requests.post('http://127.0.0.1:5000/classify', json.dumps(data))
+    print(result)
     print("Réponse : ", result.text)
 if __name__ == '__main__':
-    predict()
+    classify()
 
 

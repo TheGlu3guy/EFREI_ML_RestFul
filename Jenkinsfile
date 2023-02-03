@@ -5,7 +5,7 @@ pipeline {
             steps {
                 bat 'conda activate jenkins'
                 bat 'pip install -r requirements.txt'
-                bat 'pytest -v'
+                bat 'python test.py'
             }
         }
         stage('Build Docker Image') {

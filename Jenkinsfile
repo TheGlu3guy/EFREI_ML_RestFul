@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Testing the Flask App') {
             steps {
+                bat 'echo %path%'
                 bat 'conda activate jenkins'
                 bat 'pip install -r requirements.txt'
                 bat 'python test.py'

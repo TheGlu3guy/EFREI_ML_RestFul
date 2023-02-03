@@ -8,8 +8,8 @@ pipeline {
         }
         stage('Kill Previous Docker Image') {
             steps {
-               bat 'docker stop fmn'
-               bat 'docker rm fmn'
+               bat 'docker stop fmn &'
+               bat 'docker rm fmn &'
             }
         }
 	    stage('Run New Docker Image') {

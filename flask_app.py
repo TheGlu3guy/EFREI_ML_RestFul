@@ -19,7 +19,7 @@ id2class = {0: "T-shirt/top",
                 9: "Ankle boot", }
 model = keras.models.load_model("fashion_mnist")
 
-@app.route('/predict', methods=['POST'])
+@app.route('/classify', methods=['POST'])
 def predict():
     img = np.array(request.get_json(force=True)['image']).astype("float32")
     img = np.expand_dims(img, -1)[None]

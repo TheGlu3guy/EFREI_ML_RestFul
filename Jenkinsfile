@@ -6,7 +6,13 @@ pipeline {
                 bat 'docker build -t fashion_mnist .'
             }
         }
-	    stage('Run Docker Image') {
+        stage('Kill Previous Docker Image') {
+            steps {
+               bat 'docker stop fmn'
+               bat 'docker rm fmn'
+            }
+        }
+	    stage('Run New Docker Image') {
             steps {
                bat 'docker run -d -p 5000:5000 --name=fmn fashion_mnist'
             }

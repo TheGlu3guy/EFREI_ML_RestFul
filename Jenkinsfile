@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Testing the Flask App') {
             steps {
-                bat 'echo %path%'
-                bat 'conda activate jenkins & pip install -r requirements.txt & python test.py'
+                bat 'conda activate jenkins & pip install -r requirements.txt & python -m unittest'
             }
         }
         stage('Build Docker Image') {

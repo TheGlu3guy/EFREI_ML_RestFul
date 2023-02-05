@@ -9,21 +9,15 @@ class FlaskTestCase(unittest.TestCase):
         self.app = app.test_client()
 
     def test_classify(self):
-        with app.test_client() as client:
-            df = pd.read_csv('./model/fashion-mnist-train-1.csv', nrows=1)
+        df = pd.read_csv('./model/fashion-mnist-train-1.csv', nrows=1)
             
-            array = df.drop("label", axis=1).values.reshape(28, 28)
-            array = array/255
-            array = array.tolist()
-
-            result = client.post(
-                '/classify',
-                data={'image': array}
-            )
-            self.assertEqual(
-                type(result.data),
-                b'Ankle boot'
-            )
+        array = df.drop("label", axis=1).values.reshape(28, 28)
+        array = array/255
+        array = array.tolist()
+        
+        response = self.app.post('/classify', data = json.dumps({ 'image': array }))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, b'Shirt')
 
 if __name__ == '__main__':
     unittest.main()

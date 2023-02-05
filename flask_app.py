@@ -17,7 +17,7 @@ id2class = {0: "T-shirt/top",
                 7: "Sneaker",
                 8: "Bag",
                 9: "Ankle boot", }
-model = keras.models.load_model("./model/fashion_mnist")
+model = keras.models.load_model("./model/fashion_mnist.h5")
 
 @app.route('/classify', methods=['POST'])
 def predict():
